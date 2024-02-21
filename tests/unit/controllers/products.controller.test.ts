@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { Request, Response } from 'express';
-import { productCreatedSucessMock, productMock } from '../../mocks/product.mock';
+import { listProductsMock, productCreatedSucessMock, productMock } from '../../mocks/product.mock';
 import productController from '../../../src/controllers/product.controller';
 import productService from '../../../src/services/product.service';
 
@@ -26,5 +26,13 @@ describe('ProductsController', function () {
 
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(productCreatedSucessMock);
+  });
+  it('retorna a lista de produtos com status 200', async function () {
+    sinon.stub(productService, 'listProducts').resolves(listProductsMock);
+
+    await productController.listProducts(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(listProductsMock);
   });
 });
