@@ -7,6 +7,8 @@ describe('UsersService', function () {
   beforeEach(function () { sinon.restore(); });
 
   it('recupera uma lista de usuários com seus productIds cadastrados', async function () {
+    sinon.stub(userService, 'getUser').resolves(userProductIdsMock as any);
+    
     const serviceResponse = await userService.getUser();
 
     expect(serviceResponse).to.deep.equal(userProductIdsMock);

@@ -3,12 +3,11 @@ export const userProductIdsMock = [
       username: "Hagar",
       productIds: [1, 2],
     },
-    {
-      username: "Eddie",
-      productIds: [3, 4],
-    },
-    {
-      username: "Helga",
-      productIds: [5],
-    }
 ];
+
+export const userDataValues = {
+  dataValues: {
+    username: "Hagar",
+    productIds: [{ id: 1 }, { id: 2 }],
+  },
+};
